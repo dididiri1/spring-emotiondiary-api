@@ -6,7 +6,6 @@ import com.example.springemotiondiaryapi.dto.diary.request.DiaryUpdateRequest;
 import com.example.springemotiondiaryapi.dto.diary.response.DiaryCreateResponse;
 import com.example.springemotiondiaryapi.dto.diary.response.DiaryResponse;
 import com.example.springemotiondiaryapi.dto.diary.response.DiaryUpdateResponse;
-import com.example.springemotiondiaryapi.handler.ex.CustomApiException;
 import com.example.springemotiondiaryapi.service.DiaryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
