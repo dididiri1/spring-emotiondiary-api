@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-public class ApiResponse<T> {
 
-    private int status;
+@AllArgsConstructor
+@Data
+public class ApiResponse<T>{
+
+    private int state;
     private String message;
     private T data;
 
-    public ApiResponse(int status){
+
+    public ApiResponse(int state) {
         super();
-        this.status = status;
+        this.state = state;
     }
+
 }

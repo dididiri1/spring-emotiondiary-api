@@ -1,10 +1,9 @@
-package com.example.springemotiondiaryapi.dto.diary;
+package com.example.springemotiondiaryapi.dto.diary.response;
 
 import com.example.springemotiondiaryapi.domain.diary.Diary;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Locked;
 
 import java.time.LocalDateTime;
 
@@ -18,14 +17,14 @@ public class DiaryCreateResponse {
     private String content;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
     @Builder
-    public DiaryCreateResponse(Long diaryId, int emotionId, String content, LocalDateTime createdDate) {
+    public DiaryCreateResponse(Long diaryId, int emotionId, String content, LocalDateTime createdDateTime) {
         this.diaryId = diaryId;
         this.emotionId = emotionId;
         this.content = content;
-        this.createdDate = createdDate;
+        this.createdDateTime = createdDateTime;
     }
 
     public static DiaryCreateResponse of(Diary diary) {
@@ -33,7 +32,7 @@ public class DiaryCreateResponse {
                 .diaryId(diary.getDiaryId())
                 .emotionId(diary.getEmotionId())
                 .content(diary.getContent())
-                .createdDate(diary.getCreatedDate())
+                .createdDateTime(diary.getCreatedDatetime())
                 .build();
     }
 }

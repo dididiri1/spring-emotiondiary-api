@@ -1,6 +1,7 @@
-package com.example.springemotiondiaryapi.handler.ex;
+package com.example.springemotiondiaryapi.handler;
 
 import com.example.springemotiondiaryapi.dto.ApiResponse;
+import com.example.springemotiondiaryapi.handler.ex.CustomApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,20 +1,18 @@
 package com.example.springemotiondiaryapi.domain.diary;
 
+import com.example.springemotiondiaryapi.domain.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+@Getter @Setter
 @Entity
-public class Diary {
+public class Diary extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +22,10 @@ public class Diary {
 
     private String content;
 
-    private LocalDateTime createdDate;
-
     @Builder
-    public Diary(Long diaryId, int emotionId, String content, LocalDateTime createdDate) {
+    public Diary(Long diaryId, int emotionId, String content) {
         this.diaryId = diaryId;
         this.emotionId = emotionId;
         this.content = content;
-        this.createdDate = createdDate;
     }
 }

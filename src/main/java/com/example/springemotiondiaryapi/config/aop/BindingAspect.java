@@ -1,4 +1,4 @@
-package com.example.springemotiondiaryapi.aop;
+package com.example.springemotiondiaryapi.config.aop;
 
 import com.example.springemotiondiaryapi.dto.ApiResponse;
 import org.aspectj.lang.ProceedingJoinPoint;
