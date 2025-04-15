@@ -17,14 +17,14 @@ public class DiaryResponse {
     private String content;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
-    private LocalDateTime createdDateTime;
+    private LocalDateTime createdDate;
 
     @Builder
-    public DiaryResponse(Long diaryId, int emotionId, String content, LocalDateTime createdDateTime) {
+    public DiaryResponse(Long diaryId, int emotionId, String content, LocalDateTime createdDate) {
         this.diaryId = diaryId;
         this.emotionId = emotionId;
         this.content = content;
-        this.createdDateTime = createdDateTime;
+        this.createdDate = createdDate;
     }
 
     public static DiaryResponse of(Diary diary) {
@@ -32,7 +32,7 @@ public class DiaryResponse {
                 .diaryId(diary.getDiaryId())
                 .emotionId(diary.getEmotionId())
                 .content(diary.getContent())
-                .createdDateTime(diary.getCreatedDatetime())
+                .createdDate(diary.getCreatedDate())
                 .build();
     }
 }

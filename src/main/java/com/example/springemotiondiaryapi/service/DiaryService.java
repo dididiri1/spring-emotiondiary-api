@@ -47,7 +47,6 @@ public class DiaryService {
     @Transactional
     public DiaryUpdateResponse updateDiary(Long diaryId, DiaryUpdateRequest request) {
         Diary diary = findDiaryById(diaryId);
-
         diary.setEmotionId(request.getEmotionId());
         diary.setContent(request.getContent());
 
@@ -60,5 +59,10 @@ public class DiaryService {
         });
 
         return findDiary;
+    }
+
+    @Transactional
+    public void deleteDiary(Long diaryId) {
+        diaryRepositoryJpa.deleteById(diaryId);
     }
 }

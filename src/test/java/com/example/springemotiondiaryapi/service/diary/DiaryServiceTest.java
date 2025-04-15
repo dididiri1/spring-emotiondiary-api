@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
@@ -51,8 +52,6 @@ public class DiaryServiceTest extends IntegrationTestSupport {
         assertThat(response).isNotNull();
         assertThat(response.getEmotionId()).isEqualTo(1);
         assertThat(response.getContent()).isEqualTo("일기 내용 테스트");
-
-
     }
 
     @DisplayName("일기를 전체 목록을 한다.")
@@ -113,6 +112,22 @@ public class DiaryServiceTest extends IntegrationTestSupport {
         assertThat(response).isNotNull();
         assertThat(response.getEmotionId()).isEqualTo(3);
         assertThat(response.getContent()).isEqualTo("일기 내용 수정 테스트");
+
+    }
+
+    @DisplayName("해당 일기를 삭제 한다.")
+    @Test
+    void deleteDiaryTest() throws Exception {
+        //given
+        Diary diary = createDiary(1, "일기 내용1");
+        diaryRepositoryJpa.save(diary);
+
+        //when
+        diaryService.deleteDiary(diary.getDiaryId());
+
+        //then
+        Optional<Diary> findDiary = diaryRepositoryJpa.findById(diary.getDiaryId());
+        assertThat(findDiary).isEmpty();
 
     }
 

@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class ApiResponse<T>{
 
-    private int state;
+    private int status;
     private String message;
     private T data;
 
 
-    public ApiResponse(int state) {
+    public ApiResponse(int status) {
         super();
-        this.state = state;
+        this.status = status;
     }
 
 }
