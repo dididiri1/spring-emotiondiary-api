@@ -49,6 +49,7 @@ public class DiaryService {
         Diary diary = findDiaryById(diaryId);
         diary.setEmotionId(request.getEmotionId());
         diary.setContent(request.getContent());
+        diary.setCreatedDate(request.getCreatedDate());
 
         return DiaryUpdateResponse.of(diary);
     }

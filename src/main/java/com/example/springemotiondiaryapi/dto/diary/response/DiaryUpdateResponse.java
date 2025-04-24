@@ -10,18 +10,17 @@ import java.time.LocalDateTime;
 @Getter
 public class DiaryUpdateResponse {
 
-    private Long diaryId;
+    private Long id;
 
     private int emotionId;
 
     private String content;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
-    private LocalDateTime createdDate;
+    private Long createdDate;
 
     @Builder
-    public DiaryUpdateResponse(Long diaryId, int emotionId, String content, LocalDateTime createdDate) {
-        this.diaryId = diaryId;
+    public DiaryUpdateResponse(Long id, int emotionId, String content, Long createdDate) {
+        this.id = id;
         this.emotionId = emotionId;
         this.content = content;
         this.createdDate = createdDate;
@@ -29,7 +28,7 @@ public class DiaryUpdateResponse {
 
     public static DiaryUpdateResponse of(Diary diary) {
         return DiaryUpdateResponse.builder()
-                .diaryId(diary.getDiaryId())
+                .id(diary.getId())
                 .emotionId(diary.getEmotionId())
                 .content(diary.getContent())
                 .createdDate(diary.getCreatedDate())

@@ -19,16 +19,31 @@ public class DiaryUpdateRequest {
     @NotBlank(message = "content 는 필수 값입니다.")
     private String content;
 
+    @NotNull(message = "createdDate 는 값입니다.")
+    @Positive(message = "createdDate 는 0보다 커야 합니다.")
+    private Long createdDate;
+
     @Builder
-    private DiaryUpdateRequest(int emotionId, String content) {
+    private DiaryUpdateRequest(int emotionId, String content, Long createdDate) {
         this.emotionId = emotionId;
         this.content = content;
+        this.createdDate = createdDate;
     }
 
     public Diary toEntity(DiaryUpdateRequest request) {
         return Diary.builder()
                 .emotionId(request.emotionId)
                 .content(request.content)
+                .createdDate(request.createdDate)
                 .build();
+    }
+
+    @Override
+    public String toString() {
+        return "DiaryUpdateRequest{" +
+                "emotionId=" + emotionId +
+                ", content='" + content + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

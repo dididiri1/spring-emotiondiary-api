@@ -85,7 +85,7 @@ public class DiaryServiceTest extends IntegrationTestSupport {
         diaryRepositoryJpa.saveAll(List.of(diary1, diary2));
 
         //when
-        DiaryResponse response = diaryService.getDiary(diary1.getDiaryId());
+        DiaryResponse response = diaryService.getDiary(diary1.getId());
 
         //then
         assertThat(response).isNotNull();
@@ -106,7 +106,7 @@ public class DiaryServiceTest extends IntegrationTestSupport {
                 .build();
 
         //when
-        DiaryUpdateResponse response = diaryService.updateDiary(diary.getDiaryId(), request);
+        DiaryUpdateResponse response = diaryService.updateDiary(diary.getId(), request);
 
         //then
         assertThat(response).isNotNull();
@@ -123,10 +123,10 @@ public class DiaryServiceTest extends IntegrationTestSupport {
         diaryRepositoryJpa.save(diary);
 
         //when
-        diaryService.deleteDiary(diary.getDiaryId());
+        diaryService.deleteDiary(diary.getId());
 
         //then
-        Optional<Diary> findDiary = diaryRepositoryJpa.findById(diary.getDiaryId());
+        Optional<Diary> findDiary = diaryRepositoryJpa.findById(diary.getId());
         assertThat(findDiary).isEmpty();
 
     }

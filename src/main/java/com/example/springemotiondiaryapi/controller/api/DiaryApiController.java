@@ -48,6 +48,7 @@ public class DiaryApiController {
 
     @PatchMapping("/api/v1/diary/{id}")
     public ResponseEntity<?> updateDiary(@PathVariable("id") Long diaryId, @RequestBody DiaryUpdateRequest request) {
+        System.out.println("request: "+request.toString());
         DiaryUpdateResponse response = diaryService.updateDiary(diaryId, request);
 
         return new ResponseEntity<>(new ApiResponse<>(HttpStatus.OK.value(), "일기 수정 성공", response), HttpStatus.OK);
